@@ -7,9 +7,11 @@ import reducer from './reducers';
 import App from './components/App';
 import reportWebVitals from './reportWebVitals';
 
+//storeを作成したreducerを渡して作成,アプリケーション内部のstateはこのstoreに集約されている
 const store = createStore(reducer)
 
 ReactDOM.render(
+  // providerでラップしstoreを渡してあげる事で、アプリケーション内の全階層のコンポーネントでstoreが使用できる
   <Provider store = {store}>
     <App />
   </Provider>,
