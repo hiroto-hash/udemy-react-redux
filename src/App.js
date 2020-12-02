@@ -10,7 +10,7 @@ const App = () => {
   return(
     <div>
       {
-        // const profileの配列の要素文出力 + keyを付けてuniqueにしてあげるindex付けてあげればok
+        // const profileを渡す
         profile.map((profile,index) => {
           return <User name={profile.name} age={profile.age}  key={index}/>
         })
