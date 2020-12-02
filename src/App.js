@@ -1,32 +1,32 @@
 import React from 'react';
+import PropsTypes from 'prop-types';
 
 const App = () => {
   //配列
-  const profile = [
-    { name:"mista",age:"20"},
-    { name:"dio",age:"22"},
-    { name:"zo"}
-  ];
-  return(
+  const profiles = [
+    { name: "mista", age: 20 },
+    { name: "dio", age: 22 },
+  ]
+  return (
     <div>
       {
-        // const profileの配列の要素文出力 + keyを付けてuniqueにしてあげるindex付けてあげればok
-        profile.map((profile,index) => {
-          return <User name={profile.name} age={profile.age}  key={index}/>
+        // const profileを渡す
+        profiles.map((profile, index) => {
+          return <User name={profile.name} age={profile.age} key={index} />
         })
       }
-      <User name={"Hanako"} age="10" />
     </div>
   )
 };
 
 //profile（親）からデータをpropsで受け取ってその中身を表示している
 const User = (props) => {
-return <div>Hi, I am { props.name }, and { props.age } years old!</div>
+  return <div>Hi, I am {props.name}, and {props.age} years old!</div>
 }
 
-//propsの中に要素が無い時にはdefaultとしてこの値が入る
-User.defaultProps = {
-  age:1
+//型チェック
+User.propTypes = {
+  name: PropsTypes.string,
+  age: PropsTypes.number.isRequired
 }
 export default App;
