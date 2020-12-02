@@ -1,32 +1,36 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 const App = () => {
-  //配列
-  const profile = [
-    { name:"mista",age:"20"},
-    { name:"dio",age:"22"},
-    { name:"zo"}
-  ];
-  return(
-    <div>
-      {
-        // const profileを渡す
-        profile.map((profile,index) => {
-          return <User name={profile.name} age={profile.age}  key={index}/>
-        })
-      }
-      <User name={"Hanako"} age="10" />
-    </div>
+  return (
+    <Counter></Counter>
   )
 };
 
-//profile（親）からデータをpropsで受け取ってその中身を表示している
-const User = (props) => {
-return <div>Hi, I am { props.name }, and { props.age } years old!</div>
-}
+class Counter extends Component {
+  //初期化処理
+  constructor(props) {
+    super(props)
+    //countの初期設定
+    this.state = { count: 0 }
+  }
+  //＋1する
+  handlePlusButton = () => {
+    this.setState({ count: this.state.count + 1 })
+  }
+  //−１する
+  handleMinusButton = () => {
+    this.setState({ count: this.state.count - 1 })
+  }
+  render() {
+    return (
+      <React.Fragment>
+        {/* 表示するカウンタ */}
+        <div>counter: {this.state.count}</div>
+        <button onClick={this.handlePlusButton}>+1</button>
+        <button onClick={this.handleMinusButton}>-1</button>
+      </React.Fragment>
 
-//propsの中に要素が無い時にはdefaultとしてこの値が入る
-User.defaultProps = {
-  age:1
+    )
+  }
 }
 export default App;
