@@ -5,6 +5,7 @@ import { increment, decrement } from '../actions';
 class App extends Component {
   render() {
     const props = this.props
+    console.log(props)
     return (
       <React.Fragment>
         {/* 表示するカウンタ */}
@@ -20,6 +21,5 @@ const mapStateToProps = state => ({ value: state.count.value })
 const mapDispatchToProps = dispatch => ({
   increment: () => dispatch(increment()),
   decrement: () => dispatch(decrement()),
-}) 
+})
 export default connect(mapStateToProps, mapDispatchToProps)(App)
-// export default App;
