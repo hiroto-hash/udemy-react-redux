@@ -1,5 +1,4 @@
 import { combineReducers } from 'redux';
-import count from './count';
+import events from './events';
 
-//状態の結合？
-export default combineReducers({ count })
+export default combineReducers({ events })

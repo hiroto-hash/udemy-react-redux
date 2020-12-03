@@ -1,19 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
+import thunk from 'redux-thunk';
 import './index.css';
 import reducer from './reducers';
-import App from './components/App';
+import EventsIndex from './components/event_index';
 import reportWebVitals from './reportWebVitals';
 
-//storeを作成したreducerを渡して作成,アプリケーション内部のstateはこのstoreに集約されている
-const store = createStore(reducer)
+//thnk->アクションの代わりに関数返せる
+const store = createStore(reducer, applyMiddleware(thunk))
 
 ReactDOM.render(
-  // providerでラップしstoreを渡してあげる事で、アプリケーション内の全階層のコンポーネントでstoreが使用できる
   <Provider store = {store}>
-    <App />
+    <EventsIndex />
   </Provider>,
   document.getElementById('root')
 );
