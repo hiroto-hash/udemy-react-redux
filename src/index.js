@@ -6,6 +6,7 @@ import thunk from 'redux-thunk';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import './index.css';
 import reducer from './reducers';
+import EventsIndex from "./components/event_index";
 import EventsNew from './components/events_new';
 import reportWebVitals from './reportWebVitals';
 
@@ -16,8 +17,9 @@ ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
       <Switch>
+        {/* MVCのroute */}
         <Route exact path ='/events/new' component={EventsNew}></Route>
-        <Route exact path ='/' component={EventsNew}></Route>
+        <Route exact path ='/' component={EventsIndex}></Route>
       </Switch>
     </BrowserRouter>
   </Provider>,
